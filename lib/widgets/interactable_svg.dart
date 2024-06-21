@@ -73,6 +73,7 @@ class InteractableSvgState extends State<InteractableSvg> {
         }
         if(widget.selectedTool == 2){
           region.regionFillColor = Colors.white;
+          region.brush.clear();
         }
       }
     });

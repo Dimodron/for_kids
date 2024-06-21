@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'dart:convert';
 import '../models/saved_data.dart';
-import 'color_parser.dart';
+import '../parser/color_parser.dart';
 import 'dart:ui' as ui;
 
 class SvgParser {

@@ -48,11 +48,12 @@ class RegionPainter extends CustomPainter {
     ;
     Path brushPath = Path();
 
-    print(SizeController.instance.mapSize);
-
     // canvas optimization
+
     _scale = region.scale??sizeController.calculateScale(size);
+
     canvas.scale(_scale);
+
     if (!region.shifted) {
       region.regionPath = region.regionPath.shift(Offset(
           (size.width - sizeController.mapSize.width * _scale) * 0.5,
@@ -60,6 +61,7 @@ class RegionPainter extends CustomPainter {
       region.shifted = true;
       region.scale = _scale;
     }
+
     canvas.clipPath(region.regionPath);
 
     // work with colors
@@ -78,6 +80,7 @@ class RegionPainter extends CustomPainter {
             ColorFilter.mode(region.regionFillColor ?? Colors.white, BlendMode.color);
       }
     }
+
     canvas.drawPath(region.regionPath, background);
 
     if(region.brush.isNotEmpty){
@@ -90,13 +93,14 @@ class RegionPainter extends CustomPainter {
         }
       });
     }
+
     canvas.drawPath(region.regionPath, border);
-    region.repaint = false;
+   // region.repaint  = false;
   }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate){
-    return true;
+   return region.repaint;
   }
 
   @override
